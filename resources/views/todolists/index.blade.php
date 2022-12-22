@@ -30,7 +30,7 @@
                   
                       ]
       });
-      console.log(table.cells());
+      //console.log(table.cells());
     });
   </script>
 
