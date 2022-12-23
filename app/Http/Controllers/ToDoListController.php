@@ -18,9 +18,9 @@ class ToDoListController extends Controller
 
     public function getToDoList(Datatables $datatables) {
         $toDoLists =  ToDoList::all();
-        return $datatables->of($toDoLists)
-                    ->toJson();
+        return $datatables->of($toDoLists)->toJson();
     }
 
 
 }
+  

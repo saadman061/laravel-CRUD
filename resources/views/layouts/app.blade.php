@@ -29,20 +29,23 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Home
+                    Users
                 </a>
-                <div class="d-flex px-4">
-                    <a class="navbar-brand" href="{{ route('books.index') }}">
-                    Book List
-                    </a>
-                </div>
 
-                <div class="d-flex px-4">
-                    <a class="navbar-brand" href="{{ route('todolists') }}">
-                        To Do List
-                    </a>
-                </div>
-                
+                @guest
+                @else
+                    <div class="d-flex px-4">
+                        <a class="navbar-brand" href="{{ route('books.index') }}">
+                        Book List
+                        </a>
+                    </div>
+
+                    <div class="d-flex px-4">
+                        <a class="navbar-brand" href="{{ route('todolists') }}">
+                            To Do List
+                        </a>
+                    </div>
+                @endguest
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

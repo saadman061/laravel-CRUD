@@ -17,7 +17,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books =  Book::paginate(10);
+        $books =  Book::manipulateViewData();
         return view('books.index',compact('books'));
     }
 
@@ -45,7 +45,7 @@ class BookController extends Controller
             'title'  => ['required', 'max:10'],
             'author' => ['required', 'string'],
             'status' => ['required', 'string']
-        ]);
+        ])->validate();
         $resMessage = [];
         try {
             $response = Book::create([
@@ -103,7 +103,7 @@ class BookController extends Controller
             'title'  => ['required', 'max:10'],
             'author' => ['required', 'string'],
             'status' => ['required', 'string']
-        ]);
+        ])->validate();
         
         $updateArray = [];
         $updateArray['title'] = $input['title'];

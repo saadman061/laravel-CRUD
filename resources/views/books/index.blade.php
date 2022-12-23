@@ -28,7 +28,7 @@
                   @endif
                 </div>
 
-                <div class="py-4">
+                <div class="px-4 py-4">
                 <table class="table table-hover">                 
                     <thead>
                       <tr>
@@ -51,7 +51,7 @@
                           <td class="text-center">{{$b->title}}</td>
                           <td class="text-center">{{$b->author}}</td>
                           <td class="text-center">{{$b->status}}</td>
-                          <td class="text-center">{{$b->check_out_by}}</td>
+                          <td class="text-center">{{$b->name}}</td>
                           <td class="text-center">
                             <div >
                               <a type="button" class="btn btn-outline-secondary" href="{{ route('books.edit',['book' => $b->id]) }}">Edit</a>
@@ -65,20 +65,21 @@
                       
                     </tbody>
                   </table>
-
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                      </li>
-                    </ul>
-                  </nav>
+                    @if ($books->hasPages() > 0)
+                      <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                          <li class="page-item {{$books->previousPageUrl() ? '' : 'disabled' }}" >
+                            <a class="page-link" href="{{ $books->previousPageUrl() }}" tabindex="-1">Previous</a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="{{$books->url(1)}}">1</a></li>
+                          <li class="page-item"><a class="page-link" href="{{$books->url(2)}}">2</a></li>
+                          <li class="page-item"><a class="page-link" href="{{$books->url(3)}}">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link {{$books->nextPageUrl() ? '' : 'disabled' }}" href="{{$books->nextPageUrl()}}">Next</a>
+                          </li>
+                        </ul>
+                      </nav>
+                    @endif
                 </div>
             </div>
         </div>
